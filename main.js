@@ -153,7 +153,7 @@ crop.onclick = function (){
    start_crop();
    allow_c=true;
 }
-canvas.onmousedown = function drawByMouse(event)
+function startDraw(event)
 {
     let track = event;
      bound = canvas.getBoundingClientRect();
@@ -173,8 +173,7 @@ canvas.onmousedown = function drawByMouse(event)
     }
 
 }
-
-canvas.onmousemove = function (event){
+function drawing (event){
     bound = canvas.getBoundingClientRect();
     let track = event;
     x = track.clientX-bound.left;
@@ -213,7 +212,7 @@ canvas.onmousemove = function (event){
     }
    
 }
-canvas.onmouseup = function ()
+function done ()
 {
     down=false;
     if (allow_c && down_c)
@@ -222,8 +221,15 @@ canvas.onmouseup = function ()
     down_c=false;
     points_b=points;
     }
-
 }
+canvas.ontouchstart = startDraw;
+canvas.onmousedown = startDraw;
+
+canvas.onmousemove = drawing;
+canvas.ontouchmove = drawing;
+
+canvas.onmouseup = done;
+canvas.ontouchend = done;
 save.onclick = function (event)
 {
     bound = canvas.getBoundingClientRect();
