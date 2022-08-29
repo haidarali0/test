@@ -44,6 +44,7 @@ upload.onchange = function ()
     reset.style.display="block";
     canvas.style.display="none";
     img.style.display="block";
+    upload.value ="";
     let file = new FileReader();
     file.readAsDataURL(upload.files[0]);
     file.onload=function()
