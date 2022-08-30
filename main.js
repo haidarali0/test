@@ -234,6 +234,7 @@ canvas.ontouchstart = startDraw;
 canvas.onmousedown = startDraw;
 
 canvas.onmousemove = drawing;
+canvas.ontouchmove = drawing;
 
 canvas.onmouseup = done;
 canvas.ontouchend = done;
