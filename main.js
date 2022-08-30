@@ -156,6 +156,10 @@ crop.onclick = function (){
 function startDraw(event)
 {
     let track = event;
+    if(event.touches!=null)
+    {
+        track = event.touches[0];
+    }
      bound = canvas.getBoundingClientRect();
     x = track.clientX-bound.left;
     y =track.clientY-bound.top;
@@ -176,6 +180,10 @@ function startDraw(event)
 function drawing (event){
     bound = canvas.getBoundingClientRect();
     let track = event;
+    if(event.touches!=null)
+    {
+        track = event.touches[0];
+    }
     x = track.clientX-bound.left;
     y = track.clientY-bound.top;
     if (allow && down)
@@ -226,7 +234,6 @@ canvas.ontouchstart = startDraw;
 canvas.onmousedown = startDraw;
 
 canvas.onmousemove = drawing;
-canvas.ontouchmove = drawing;
 
 canvas.onmouseup = done;
 canvas.ontouchend = done;
